@@ -68,11 +68,11 @@ def brute_force(ciphertext):
         key_inv = matrix_inverse_mod26(key)
         if key_inv is not None:  # only valid keys
             pt = decrypt(ciphertext, key)
-            if pt is not None and "THE" in pt:  # simple filter (you can change rule)
+            if pt is not None: 
                 print(f"Key={key.tolist()} => Plaintext={pt}")
 
 # --- Example ---
-key = np.array([[3, 3], [2, 5]])   # sample 2x2 key
+key = np.array([[3, 3], [2, 5]])
 plaintext = "HELLO"
 cipher = encrypt(plaintext, key)
 decrypted = decrypt(cipher, key)
@@ -81,7 +81,7 @@ print("Plaintext :", plaintext)
 print("Ciphertext:", cipher)
 print("Decrypted :", decrypted)
 
-print("\n--- Brute Force Guess ---")
+print("\nBrute Force Guess")
 brute_force(cipher)
 ```
 
@@ -99,7 +99,7 @@ brute_force(cipher)
 3. Brute Force:
    1. Try all 26⁴ = 456,976 possible 2×2 matrices.
    2. Skip those without inverse mod 26.
-   3. Decrypt and print possible results (here I filtered for plaintexts containing "THE" as a common word).
+   3. Decrypt and print possible results.
 
 
 
